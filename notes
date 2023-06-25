@@ -1,0 +1,26 @@
+Dynamic vs. static storage
+Unnecessary copies: arguments
+Unnecessary copies: pulling out a row/column/submatrix
+Use built-in functionality (e.g. .homogeneous())
+Manual loops instead of .colwise .rowwise
+Using doubles for indices
+
+Example: get indices of elements in vector x that are in range [low, high]
+bad implementation:
+Eigen::VectorXd IndicesInRange(const Eigen::VectorXd& X, double low, double high) {
+  int n = X.size();
+  Eigen::VectorXd pos(n);
+  pos.fill(-1);
+  int i_pos = 0;
+
+  for (int i_X = 0; i_X < n; ++i_X) {
+    if (X(i_X) >= low && X(i_X) <= high && !std::isnan(X(i_X))) {
+      pos(i_pos) = i_X;
+      ++i_pos;
+    }
+  }
+
+  Eigen::VectorXd results(i_pos);
+  results = pos.segment(0, i_pos);
+  return results;
+}
