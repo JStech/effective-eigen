@@ -90,7 +90,7 @@ static void BM_vector_intersection_eigen_ref(benchmark::State& state) {
 }
 BENCHMARK(BM_vector_intersection_eigen_ref);
 
-static void BM_intersection_naive(benchmark::State& state) {
+static void BM_mat_col_intersection_naive(benchmark::State& state) {
   Eigen::Matrix<double, 3, 4> m = Eigen::Matrix<double, 3, 4>::Random();
   Eigen::Vector3d i;
   for (auto _ : state) {
@@ -99,9 +99,9 @@ static void BM_intersection_naive(benchmark::State& state) {
   benchmark::DoNotOptimize(i);
   benchmark::DoNotOptimize(m);
 }
-BENCHMARK(BM_intersection_naive);
+BENCHMARK(BM_mat_col_intersection_naive);
 
-static void BM_intersection_const_ref(benchmark::State& state) {
+static void BM_mat_col_intersection_const_ref(benchmark::State& state) {
   Eigen::Matrix<double, 3, 4> m = Eigen::Matrix<double, 3, 4>::Random();
   Eigen::Vector3d i;
   for (auto _ : state) {
@@ -110,9 +110,9 @@ static void BM_intersection_const_ref(benchmark::State& state) {
   benchmark::DoNotOptimize(i);
   benchmark::DoNotOptimize(m);
 }
-BENCHMARK(BM_intersection_const_ref);
+BENCHMARK(BM_mat_col_intersection_const_ref);
 
-static void BM_intersection_eigen_ref(benchmark::State& state) {
+static void BM_mat_col_intersection_eigen_ref(benchmark::State& state) {
   Eigen::Matrix<double, 3, 4> m = Eigen::Matrix<double, 3, 4>::Random();
   Eigen::Vector3d i;
   for (auto _ : state) {
@@ -121,6 +121,6 @@ static void BM_intersection_eigen_ref(benchmark::State& state) {
   benchmark::DoNotOptimize(i);
   benchmark::DoNotOptimize(m);
 }
-BENCHMARK(BM_intersection_eigen_ref);
+BENCHMARK(BM_mat_col_intersection_eigen_ref);
 
 BENCHMARK_MAIN();
